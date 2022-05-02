@@ -11,13 +11,17 @@ source:
   patches:
     - msvc-compile.patch  # [win]
     - cxx11-narrowing.patch
+    - eigenval-overrun.patch
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 2
+  number: 3
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
     - llvm-openmp   # [osx]
