@@ -8,10 +8,6 @@ package:
 source:
   url: https://github.com/salilab/pyRMSD/archive/v{{ version }}.tar.gz
   sha256: b9ecde2961bbf0147472bd8a3d46247a1882b5146c10f8964b6c183332184ce1
-  patches:
-    - msvc-compile.patch  # [win]
-    - cxx11-narrowing.patch
-    - eigenval-overrun.patch
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
