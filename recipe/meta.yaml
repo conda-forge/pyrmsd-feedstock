@@ -1,5 +1,5 @@
 {% set name = "pyrmsd" %}
-{% set version = "4.3.1" %}
+{% set version = "4.3.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/salilab/pyRMSD/archive/v{{ version }}.tar.gz
-  sha256: b9ecde2961bbf0147472bd8a3d46247a1882b5146c10f8964b6c183332184ce1
+  sha256: 9d0c14ae8cbdc6ce069c607b59c0db9d91133d559a6272b0a6bc2a2cc68090cb
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
