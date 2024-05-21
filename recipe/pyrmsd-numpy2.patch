@@ -1,0 +1,28 @@
+commit 691868610541e2f1d42ea761347752e16b441c30 (HEAD -> refs/heads/main, refs/remotes/origin/main, refs/remotes/origin/HEAD)
+Author: Ben Webb <ben@salilab.org>
+Date:   Mon May 20 21:21:59 2024 -0700
+
+    Fix build with NumPy 2.0
+
+diff --git a/src/matrix/Matrix.cpp b/src/matrix/Matrix.cpp
+index c23e3e4..aca854f 100644
+--- a/src/matrix/Matrix.cpp
++++ b/src/matrix/Matrix.cpp
+@@ -244,7 +244,7 @@ int condensedMatrix_ass_subscript(CondensedMatrix *self, PyObject *key, PyObject
+ 		// NPY_ARRAY_ENSURECOPY
+ 		// NPY_ARRAY_ENSUREARRAY
+ 		if(self->numpy_array != NULL){
+-			((double*) PyArray_GETPTR1(self->numpy_array,0))[pos] =self->data[pos];
++			((double*) PyArray_GETPTR1((PyArrayObject*)self->numpy_array,0))[pos] =self->data[pos];
+ 		}
+ 	}
+ 	else{
+@@ -255,7 +255,7 @@ int condensedMatrix_ass_subscript(CondensedMatrix *self, PyObject *key, PyObject
+ 			// BEWARE!!!!!! SLOW AND REDUNDANT HACK
+ 			/////////////////////////////////////////
+ 			if(self->numpy_array != NULL){
+-				((double*) PyArray_GETPTR1(self->numpy_array,0))[pos] =self->data[pos];
++				((double*) PyArray_GETPTR1((PyArrayObject*)self->numpy_array,0))[pos] =self->data[pos];
+ 			}
+ 		}
+ 	}

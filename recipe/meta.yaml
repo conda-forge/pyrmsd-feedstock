@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/salilab/pyRMSD/archive/v{{ version }}.tar.gz
   sha256: 9d0c14ae8cbdc6ce069c607b59c0db9d91133d559a6272b0a6bc2a2cc68090cb
+  patches:
+    - pyrmsd-numpy2.patch
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
