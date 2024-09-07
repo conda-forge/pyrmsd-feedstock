@@ -27,6 +27,7 @@ requirements:
     - libgomp       # [linux]
   host:
     - pip
+    - setuptools
     - python
     - numpy
   run:
