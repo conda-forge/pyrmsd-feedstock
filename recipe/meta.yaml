@@ -1,5 +1,5 @@
 {% set name = "pyrmsd" %}
-{% set version = "4.3.2" %}
+{% set version = "4.3.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/salilab/pyRMSD/archive/v{{ version }}.tar.gz
-  sha256: 9d0c14ae8cbdc6ce069c607b59c0db9d91133d559a6272b0a6bc2a2cc68090cb
+  sha256: 2f1a2e8cc7007e39836e1e20ef0dd8c9273eb17e84d27701ad5c1b9570769181
   patches:
     - pyrmsd-numpy2.patch
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 5
+  number: 0
 
 requirements:
   build:
